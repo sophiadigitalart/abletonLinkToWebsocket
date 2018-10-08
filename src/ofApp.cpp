@@ -9,7 +9,7 @@ void ofApp::setup(){
 
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	// local ws server
-	client.connect("localhost:8088");
+	client.connect("localhost", 8088, false);
 	// basic connection:
 	//client.connect("echo.websocket.org");
 	// OR optionally use SSL
