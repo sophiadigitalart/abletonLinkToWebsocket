@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxAbletonLink.h"
+#include "ofxLibwebsockets.h"
 
 class ofApp : public ofBaseApp{
 
@@ -21,6 +22,16 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		//websockets
+		ofxLibwebsockets::Client client;
+		// websocket methods
+		void onConnect(ofxLibwebsockets::Event& args);
+		void onOpen(ofxLibwebsockets::Event& args);
+		void onClose(ofxLibwebsockets::Event& args);
+		void onIdle(ofxLibwebsockets::Event& args);
+		void onMessage(ofxLibwebsockets::Event& args);
+		void onBroadcast(ofxLibwebsockets::Event& args);
 private:
 	ofxAbletonLink link;
+
 };
