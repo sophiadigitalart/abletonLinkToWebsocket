@@ -21,6 +21,7 @@ void ofApp::update(){
 	if (tempo != link.tempo()) {
 		tempo = link.tempo();
 		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+		cout << "sending tempo change" << endl;
 	}
 
 }
