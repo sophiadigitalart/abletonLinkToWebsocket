@@ -4,36 +4,11 @@
 void ofApp::setup(){
 	ofBackground(0);
 
-
 	link.setup(120);
 
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	// local ws server
+	// local ws server ip, port, useSSL
 	client.connect("localhost", 8088, false);
-	// basic connection:
-	//client.connect("echo.websocket.org");
-	// OR optionally use SSL
-//     client.connect("echo.websocket.org", true);
-
-	// 1 - get default options
-//    ofxLibwebsockets::ClientOptions options = ofxLibwebsockets::defaultClientOptions();
-
-	// 2 - set basic params
-//    options.host = "echo.websocket.org";
-
-	// advanced: set keep-alive timeouts for events like
-	// loss of internet
-
-	// 3 - set keep alive params
-	// BIG GOTCHA: on BSD systems, e.g. Mac OS X, these time params are system-wide
-	// ...so ka_time just says "check if alive when you want" instead of "check if
-	// alive after X seconds"
-//    options.ka_time     = 1;
-//    options.ka_probes   = 1;
-//    options.ka_interval = 1;=
-
-	// 4 - connect
-//    client.connect(options);
 
 	ofSetLogLevel(OF_LOG_ERROR);
 
@@ -43,6 +18,10 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	if (tempo != link.tempo()) {
+		tempo = link.tempo();
+		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+	}
 
 }
 
@@ -54,7 +33,7 @@ void ofApp::draw(){
 	ofDrawBitmapString("Tempo: " + ofToString(link.tempo()) + " Beats: " + ofToString(status.beat) + " Phase: " + ofToString(status.phase), 20, 20);
 	ofDrawBitmapString("Number of peers: " + ofToString(link.numPeers()), 20, 40);
 
-	ofDrawBitmapString("Type anywhere to send 'hello' to your server\nCheck the console for output!", 20, 60);
+	ofDrawBitmapString("Type anywhere to send tempo to your server\nCheck the console for output!", 20, 60);
 	ofDrawBitmapString(client.isConnected() ? "Client is connected" : "Client disconnected :(", 20, 100);
 
 }
@@ -103,8 +82,8 @@ void ofApp::keyPressed(int key){
 		link.setTempo(link.tempo() - 1);
 	}
 	else {
-		client.send("Hello");
-		cout << "sending hello" << endl;
+		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+		cout << "sending tempo" << endl;
 	}
 }
 

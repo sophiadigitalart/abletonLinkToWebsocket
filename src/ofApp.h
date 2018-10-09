@@ -33,5 +33,5 @@ class ofApp : public ofBaseApp{
 		void onBroadcast(ofxLibwebsockets::Event& args);
 private:
 	ofxAbletonLink link;
-
+	double tempo;
 };
