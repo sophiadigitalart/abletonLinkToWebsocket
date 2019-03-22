@@ -29,7 +29,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	ofxAbletonLink::Status status = link.update();
-
+	
 	ofSetColor(255);
 	ofDrawBitmapString("Tempo: " + ofToString(link.tempo()) + " Beats: " + ofToString(status.beat) + " Phase: " + ofToString(status.phase), 20, 20);
 	ofDrawBitmapString("Number of peers: " + ofToString(link.numPeers()), 20, 40);
@@ -60,7 +60,27 @@ void ofApp::onIdle(ofxLibwebsockets::Event& args) {
 
 //--------------------------------------------------------------
 void ofApp::onMessage(ofxLibwebsockets::Event& args) {
+	try {
 	cout << "got message " << args.message << endl;
+	if (!args.json.isNull()) {
+		if (!args.json["tempo"].isNull()) {
+			if (args.json["tempo"].asDouble() != tempo) {
+				link.setTempo(tempo);
+			}
+			// args.json["setup"]["id"].asInt();
+			// for some reason these come across as strings via JSON.stringify!
+			/*int r = ofToInt(args.json["setup"]["color"]["r"].asString());
+			int g = ofToInt(args.json["setup"]["color"]["g"].asString());
+			int b = ofToInt(args.json["setup"]["color"]["b"].asString());*/
+		}
+		
+	}
+	else {
+	}
+	}
+	catch (exception& e) {
+		ofLogError() << e.what();
+	}
 }
 
 //--------------------------------------------------------------
@@ -70,21 +90,31 @@ void ofApp::onBroadcast(ofxLibwebsockets::Event& args) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	if (key == OF_KEY_RIGHT) {
+	ofLogNotice("PRESSED KEY: " + ofToString(key));
+	switch (key) {
+	case OF_KEY_RIGHT:
 		link.setQuantum(link.quantum() + 1);
-	}
-	else if (key == OF_KEY_LEFT) {
+		break;
+	case OF_KEY_LEFT:
 		link.setQuantum(link.quantum() - 1);
-	}
-	else if (key == OF_KEY_UP) {
-		link.setTempo(link.tempo() + 1);
-	}
-	else if (key == OF_KEY_DOWN) {
+		break;
+	case OF_KEY_UP:
+		link.setTempo(link.tempo() + 1); 
+		break;
+	case OF_KEY_DOWN:
 		link.setTempo(link.tempo() - 1);
-	}
-	else {
+		break;
+	case 119:// w
+	case 87: // W		
+		
+		break;
+	case 27: // ESC
+		exit();
+		break;
+	default:
 		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
 		cout << "sending tempo" << endl;
+		break;
 	}
 }
 
