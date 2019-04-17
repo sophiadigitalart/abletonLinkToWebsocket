@@ -96,7 +96,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src;
+..\..\..\addons\ofxXmlSettings\src;
+..\..\..\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -115,7 +117,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src;
+..\..\..\addons\ofxXmlSettings\src;
+..\..\..\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -134,7 +138,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src;
+..\..\..\addons\ofxXmlSettings\src;
+..\..\..\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -156,7 +162,9 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxAbletonLink\src;..\..\..\addons\ofxAbletonLink\libs\link\include;..\..\..\addons\ofxAbletonLink\libs\link\include\ableton;..\..\..\addons\ofxAbletonLink\libs\link\modules\asio-standalone\asio\include;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp;..\..\..\addons\ofxLibwebsockets\libs\jsoncpp\json;..\..\..\addons\ofxLibwebsockets\libs\libwebsockets\include\;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\include\ofxLibwebsockets;..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src;..\..\..\addons\ofxLibwebsockets\src;
+..\..\..\addons\ofxXmlSettings\src;
+..\..\..\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -172,6 +180,10 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAbletonLink\src\ofxAbletonLink.cpp" />
@@ -185,6 +197,8 @@
     <ClCompile Include="..\..\..\addons\ofxLibwebsockets\libs\ofxLibwebsockets\src\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxAbletonLink\src\ofxAbletonLink.h" />
     <ClInclude Include="..\..\..\addons\ofxLibwebsockets\src\ofxLibwebsockets.h" />

@@ -5,30 +5,41 @@ void ofApp::setup(){
 	ofBackground(0);
 
 	link.setup(120);
-
+	beat = 0.0;
+	phase = 0.0;
 	ofSetLogLevel(OF_LOG_VERBOSE);
+	// load settings.xml
+	if (settings.loadFile("settings.xml") == false) {
+		ofLog() << "XML ERROR, possibly quit";
+	}
+	settings.pushTag("settings");
+	server = settings.getValue("server", "127.0.0.1");
+	ofLog() << "server" << server;
 	// local ws server ip, port, useSSL
-	client.connect("localhost", 8088, false);
+	client.connect(server, 8088, false);
 
 	ofSetLogLevel(OF_LOG_ERROR);
 
 	client.addListener(this);
-	ofSetFrameRate(60);
+	ofSetFrameRate(24);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	status = link.update();
 	if (tempo != link.tempo()) {
 		tempo = link.tempo();
 		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
 		cout << "sending tempo change" << endl;
 	}
+	client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+	client.send("{\"cmd\" :[{\"type\" : 3,\"beat\" : " + ofToString(status.beat) + "}]}");
+	client.send("{\"cmd\" :[{\"type\" : 4,\"phase\" : " + ofToString(status.phase) + "}]}");
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	ofxAbletonLink::Status status = link.update();
 	
 	ofSetColor(255);
 	ofDrawBitmapString("Tempo: " + ofToString(link.tempo()) + " Beats: " + ofToString(status.beat) + " Phase: " + ofToString(status.phase), 20, 20);
@@ -55,7 +66,7 @@ void ofApp::onClose(ofxLibwebsockets::Event& args) {
 
 //--------------------------------------------------------------
 void ofApp::onIdle(ofxLibwebsockets::Event& args) {
-	cout << "on idle" << endl;
+	//cout << "on idle" << endl;
 }
 
 //--------------------------------------------------------------
@@ -92,7 +103,7 @@ void ofApp::onBroadcast(ofxLibwebsockets::Event& args) {
 void ofApp::keyPressed(int key){
 	ofLogNotice("PRESSED KEY: " + ofToString(key));
 	switch (key) {
-	case OF_KEY_RIGHT:
+	/*case OF_KEY_RIGHT:
 		link.setQuantum(link.quantum() + 1);
 		break;
 	case OF_KEY_LEFT:
@@ -107,7 +118,7 @@ void ofApp::keyPressed(int key){
 	case 119:// w
 	case 87: // W		
 		
-		break;
+		break;*/
 	case 27: // ESC
 		exit();
 		break;

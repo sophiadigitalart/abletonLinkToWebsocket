@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxAbletonLink.h"
 #include "ofxLibwebsockets.h"
-
+#include "ofxXmlSettings.h"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -32,6 +32,11 @@ class ofApp : public ofBaseApp{
 		void onMessage(ofxLibwebsockets::Event& args);
 		void onBroadcast(ofxLibwebsockets::Event& args);
 private:
-	ofxAbletonLink link;
-	double tempo;
+	ofxAbletonLink	link;
+	double			tempo;
+	double			beat;
+	double			phase;
+	ofxAbletonLink::Status status;
+	ofxXmlSettings 	settings;
+	string			server = "127.0.0.1";
 };
