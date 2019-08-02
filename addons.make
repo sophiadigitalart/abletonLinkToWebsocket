@@ -1,3 +1,3 @@
-ofxXmlSettings
 ofxAbletonLink
 ofxLibwebsockets
+ofxXmlSettings

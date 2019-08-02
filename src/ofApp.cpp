@@ -26,24 +26,23 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	status = link.update();
-	if (tempo != link.tempo()) {
-		tempo = link.tempo();
-		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+	//status = link.update();
+	if (tempo != link.getBPM()) {
+		tempo = link.getBPM();
+		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.getBPM()) + "}]}");
 		cout << "sending tempo change" << endl;
 	}
-	client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
-	client.send("{\"cmd\" :[{\"type\" : 3,\"beat\" : " + ofToString(status.beat) + "}]}");
-	client.send("{\"cmd\" :[{\"type\" : 4,\"phase\" : " + ofToString(status.phase) + "}]}");
+	client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.getBPM()) + "}]}");
+	client.send("{\"cmd\" :[{\"type\" : 3,\"beat\" : " + ofToString(link.getBeat()) + "}]}");
+	client.send("{\"cmd\" :[{\"type\" : 4,\"phase\" : " + ofToString(link.getPhase()) + "}]}");
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	
 	ofSetColor(255);
-	ofDrawBitmapString("Tempo: " + ofToString(link.tempo()) + " Beats: " + ofToString(status.beat) + " Phase: " + ofToString(status.phase), 20, 20);
-	ofDrawBitmapString("Number of peers: " + ofToString(link.numPeers()), 20, 40);
+	ofDrawBitmapString("Tempo: " + ofToString(link.getBPM()) + " Beats: " + ofToString(link.getBeat()) + " Phase: " + ofToString(link.getPhase()), 20, 20);
+	ofDrawBitmapString("Number of peers: " + ofToString(link.getNumPeers()), 20, 40);
 
 	ofDrawBitmapString("Type anywhere to send tempo to your server\nCheck the console for output!", 20, 60);
 	ofDrawBitmapString(client.isConnected() ? "Client is connected" : "Client disconnected :(", 20, 100);
@@ -71,27 +70,21 @@ void ofApp::onIdle(ofxLibwebsockets::Event& args) {
 
 //--------------------------------------------------------------
 void ofApp::onMessage(ofxLibwebsockets::Event& args) {
-	try {
-	cout << "got message " << args.message << endl;
-	if (!args.json.isNull()) {
-		if (!args.json["tempo"].isNull()) {
-			if (args.json["tempo"].asDouble() != tempo) {
-				link.setTempo(tempo);
+	/* try {
+		cout << "got message " << args.message << endl;
+		if (!args.json.is_null()) {
+			if (!args.json["tempo"].is_null()) {
+				if (args.json["tempo"] != tempo) {//.asDouble()
+					link.setBPM(tempo);
+				}
 			}
-			// args.json["setup"]["id"].asInt();
-			// for some reason these come across as strings via JSON.stringify!
-			/*int r = ofToInt(args.json["setup"]["color"]["r"].asString());
-			int g = ofToInt(args.json["setup"]["color"]["g"].asString());
-			int b = ofToInt(args.json["setup"]["color"]["b"].asString());*/
 		}
-		
-	}
-	else {
-	}
+		else {
+		}
 	}
 	catch (exception& e) {
 		ofLogError() << e.what();
-	}
+	} */
 }
 
 //--------------------------------------------------------------
@@ -103,27 +96,27 @@ void ofApp::onBroadcast(ofxLibwebsockets::Event& args) {
 void ofApp::keyPressed(int key){
 	ofLogNotice("PRESSED KEY: " + ofToString(key));
 	switch (key) {
-	/*case OF_KEY_RIGHT:
-		link.setQuantum(link.quantum() + 1);
-		break;
-	case OF_KEY_LEFT:
-		link.setQuantum(link.quantum() - 1);
-		break;
-	case OF_KEY_UP:
-		link.setTempo(link.tempo() + 1); 
-		break;
-	case OF_KEY_DOWN:
-		link.setTempo(link.tempo() - 1);
-		break;
-	case 119:// w
-	case 87: // W		
-		
-		break;*/
+		/*case OF_KEY_RIGHT:
+			link.setQuantum(link.quantum() + 1);
+			break;
+		case OF_KEY_LEFT:
+			link.setQuantum(link.quantum() - 1);
+			break;
+		case OF_KEY_UP:
+			link.setTempo(link.tempo() + 1);
+			break;
+		case OF_KEY_DOWN:
+			link.setTempo(link.tempo() - 1);
+			break;
+		case 119:// w
+		case 87: // W
+
+			break;*/
 	case 27: // ESC
 		exit();
 		break;
 	default:
-		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.tempo()) + "}]}");
+		client.send("{\"cmd\" :[{\"type\" : 2,\"tempo\" : " + ofToString(link.getBPM()) + "}]}");
 		cout << "sending tempo" << endl;
 		break;
 	}
